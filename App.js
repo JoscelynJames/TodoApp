@@ -16,6 +16,7 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import AppBar from './Components/AppBar';
+import AddTask from './Components/AddTask';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}></ScrollView>
         <AppBar></AppBar>
+        <AddTask></AddTask>
       </SafeAreaView>
     </Fragment>
   );
