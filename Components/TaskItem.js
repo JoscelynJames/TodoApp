@@ -1,26 +1,48 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
-import theme from '../theme';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Animated,
+} from 'react-native';
 import completeIcon from '../assets/icons/complete.png';
-import deleteIcon from '../assets/icons/remove.png';
 
 export default class TaskItem extends Component {
-  constructor(props) {
-    super(props);
-  }
+  state = {
+    fadeOutAnimation: new Animated.Value(1),
+    doAnimation: false,
+  };
 
   handleCompletePress = () => {
-    this.props.completeTask(this.props.task);
+    this.setState({doAnimation: true});
+
+    Animated.timing(this.state.fadeOutAnimation, {
+      toValue: 0,
+      duration: 1000,
+    }).start();
+
+    setTimeout(() => {
+      this.setState({doAnimation: false});
+      this.props.completeTask(this.props.task);
+    }, 1500);
   };
 
   render() {
+    let {fadeOutAnimation, doAnimation} = this.state;
+
     return (
-      <View style={styles.taskItemContainer}>
+      <Animated.View
+        style={{
+          ...styles.taskItemContainer,
+          opacity: doAnimation ? fadeOutAnimation : null,
+        }}>
         <Text style={styles.task}>{this.props.task}</Text>
         <TouchableOpacity onPress={this.handleCompletePress}>
           <Image style={styles.icons} source={completeIcon} />
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     );
   }
 }

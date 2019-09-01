@@ -25,6 +25,7 @@ export default class AddTask extends Component {
   completeTask = task => {
     if (task) {
       const tasks = this.state.tasks.filter(t => t !== task);
+      console.log(tasks);
       this.setState({tasks});
     }
   };
