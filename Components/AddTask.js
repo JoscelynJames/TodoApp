@@ -11,7 +11,7 @@ import theme from '../theme';
 
 export default class AddTask extends Component {
   state = {
-    tasks: ['test 1', 'test 2'],
+    tasks: ['Take out the trash', 'Get dog food', 'Write test for this app'],
     text: 'What needs to get done?',
   };
 
