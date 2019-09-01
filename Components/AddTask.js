@@ -18,16 +18,13 @@ export default class AddTask extends Component {
   onAddPress = () => {
     this.setState(prevState => ({
       tasks: [...prevState.tasks, prevState.text],
-      text: "what's next?",
+      text: "What's next?",
     }));
   };
 
   completeTask = task => {
-    if (task) {
-      const tasks = this.state.tasks.filter(t => t !== task);
-      console.log(tasks);
-      this.setState({tasks});
-    }
+    const tasks = this.state.tasks.filter(t => t !== task);
+    this.setState({tasks});
   };
 
   render() {
@@ -70,8 +67,7 @@ const styles = StyleSheet.create({
   taskInput: {
     width: '70%',
     height: 30,
-    borderBottomColor: theme.iconColor,
-    borderBottomWidth: 1,
+    color: theme.iconColor,
   },
 
   addButton: {

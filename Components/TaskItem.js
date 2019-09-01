@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Animated,
 } from 'react-native';
+import theme from '../theme';
 import completeIcon from '../assets/icons/complete.png';
 
 export default class TaskItem extends Component {
@@ -30,7 +31,7 @@ export default class TaskItem extends Component {
   };
 
   render() {
-    let {fadeOutAnimation, doAnimation} = this.state;
+    const {fadeOutAnimation, doAnimation} = this.state;
 
     return (
       <Animated.View
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
   task: {
     fontSize: 18,
     width: '90%',
+    color: theme.iconColor,
   },
 
   icons: {
