@@ -7,16 +7,12 @@
  */
 
 import React, {Fragment} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  StatusBar,
-  Text,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, ScrollView, StatusBar} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import AppBar from './Components/AppBar';
-import AddTask from './Components/AddTask';
+import {StyleProvider} from 'native-base';
+import TaskPage from './Components/TaskPage';
+import getTheme from './native-base-theme/components';
+import material from './native-base-theme/variables/material';
 
 const App = () => {
   return (
@@ -26,8 +22,9 @@ const App = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}></ScrollView>
-        <AppBar></AppBar>
-        <AddTask></AddTask>
+        <StyleProvider style={getTheme(material)}>
+          <TaskPage></TaskPage>
+        </StyleProvider>
       </SafeAreaView>
     </Fragment>
   );
