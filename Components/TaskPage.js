@@ -4,11 +4,6 @@ import AddTask from './AddTask';
 
 export default class TaskPage extends Component {
   render() {
-    return (
-      <Fragment>
-        <AppBar></AppBar>
-        <AddTask></AddTask>
-      </Fragment>
-    );
+    return <Fragment>{/* <AddTask></AddTask> */}</Fragment>;
   }
 }

@@ -1,16 +1,46 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image, Switch} from 'react-native';
+import {StyleSheet, Image, Switch} from 'react-native';
+import {
+  Header,
+  Container,
+  Content,
+  H1,
+  Left,
+  Right,
+  Body,
+  Title,
+  Text,
+  Footer,
+  Button,
+  FooterTab,
+  Icon,
+} from 'native-base';
 import theme from '../theme';
 import TodoListIcon from '../assets/icons/todoListIcon.png';
+import AddTask from './AddTask';
 
 export default class AppBar extends Component {
+  toggleTheme = () => {
+    this.props.toggleTheme();
+  };
+
   render() {
     return (
-      <View style={styles.appBar}>
-        <Image style={styles.icon} source={TodoListIcon}></Image>
-        <Text style={styles.appName}>TodoApp</Text>
-        <Switch style={styles.themeToggle}></Switch>
-      </View>
+      <Container>
+        <Header style={styles.appBar}>
+          <Body>
+            <H1 style={styles.appName}>TodoApp</H1>
+          </Body>
+          <Right>
+            <Switch
+              style={styles.themeToggle}
+              onChange={this.toggleTheme}></Switch>
+          </Right>
+        </Header>
+        <Content styles={styles.mainContent}>
+          <AddTask></AddTask>
+        </Content>
+      </Container>
     );
   }
 }
@@ -18,27 +48,25 @@ export default class AppBar extends Component {
 const styles = StyleSheet.create({
   appBar: {
     height: 90,
-    padding: 10,
-    backgroundColor: theme.mainColor,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
+    backgroundColor: theme.accentColor,
   },
 
   appName: {
     color: theme.textColor,
-    fontSize: 22,
-    width: '70%',
-    textAlign: 'center',
   },
 
   icon: {
-    height: 60,
-    width: 50,
+    height: 95,
+    marginLeft: 20,
+    marginBottom: 20,
   },
 
   themeToggle: {
-    height: 20,
-    width: 30,
+    marginRight: 20,
+  },
+
+  mainContent: {
+    backgroundColor: 'red',
+    marginTop: 100,
   },
 });
